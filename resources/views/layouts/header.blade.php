@@ -137,10 +137,9 @@
             <!--end::Fullscreen Toggle-->
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img src="../assets/img/user2-160x160.jpg" class="user-image rounded-circle shadow"
-                        alt="User Image" />
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                <a href="#" class="nav-link dropdown-toggle d-flex align-items-center gap-1" data-bs-toggle="dropdown">
+                    <span class="badge rounded-pill text-bg-secondary">{{ auth()->user()->initials() }}</span>
+                    <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <!--begin::User Image-->
