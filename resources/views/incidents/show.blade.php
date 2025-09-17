@@ -40,7 +40,7 @@
                         <div class="col-lg-2 my-1"><strong>Host(s) Objetivos: </strong></div>
                         <div class="col-lg-4 my-1" id="objetive_host"></div>
                         <div class="col-lg-2 my-1"><strong>Host(s) Origen: </strong></div>
-                        <div class="col-lg-4 my-1" id="origin_host"></div>
+                        <div class="    col-lg-4 my-1" id="origin_host"></div>
                     </div>
                     <div class="row">
                         <div class="col-lg-2 my-1"><strong>Valoración: </strong></div>

@@ -28,18 +28,18 @@
                 <li class="nav-item">
                     <a href="{{ route('incidents.index') }}" class="nav-link @if(Route::currentRouteName() === 'incidents.index') active @endif" style="color: #fff !important;">
                         <i class="nav-icon bi bi-exclamation-triangle-fill"></i>
-                        <span class="nav-badge badge text-bg-light me-3">6</span>
+                        <span class="nav-badge badge text-bg-light me-3">1</span>
                         <p>Incidentes</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html" class="nav-link" style="color: #fff !important;">
+                    <a href="{{ route('modules.index',2) }}" class="nav-link @if(Route::currentRouteName() === 'modules.index' && (isset($type) && $type==2)) active @endif" style="color: #fff !important;">
                         <i class="nav-icon bi bi-file-earmark-fill"></i>
                         <p>Páginas</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../index.html" class="nav-link" style="color: #fff !important;">
+                    <a href="{{ route('modules.index',1) }}" class="nav-link @if(Route::currentRouteName() === 'modules.index' && (isset($type) && $type==1)) active @endif" style="color: #fff !important;">
                         <i class="nav-icon bi bi-filter-square"></i>
                         <p>Secciones</p>
                     </a>

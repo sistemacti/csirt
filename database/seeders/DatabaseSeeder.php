@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AboutUsSeeder::class,
-            ActiveModulesSeeder::class,
             AffectedInfrastructureSeeder::class,
             AffectedServiceSeeder::class,
             EntityInformationSeeder::class,
@@ -35,6 +34,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             SystemInformationSeeder::class,
             TermSeeder::class,
+            ModulesSeeder::class
         ]);
     }
 }
