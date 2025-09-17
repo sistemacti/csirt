@@ -25,6 +25,7 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                <hr>
                 <li class="nav-item">
                     <a href="{{ route('incidents.index') }}" class="nav-link @if(Route::currentRouteName() === 'incidents.index') active @endif" style="color: #fff !important;">
                         <i class="nav-icon bi bi-exclamation-triangle-fill"></i>
@@ -32,6 +33,20 @@
                         <p>Incidentes</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff !important;">
+                        <i class="nav-icon bi bi-newspaper"></i>
+                        <p>Boletines</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: #fff !important;">
+                        <i class="nav-icon bi bi-folder-fill"></i>
+                        <p>Recursos</p>
+                    </a>
+                </li>
+                <li class="nav-header">ADMINISTRACIÓN</li>
+                <hr>
                 <li class="nav-item">
                     <a href="{{ route('modules.index',2) }}" class="nav-link @if(Route::currentRouteName() === 'modules.index' && (isset($type) && $type==2)) active @endif" style="color: #fff !important;">
                         <i class="nav-icon bi bi-file-earmark-fill"></i>

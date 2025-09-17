@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@if($type==1)
-@section('title', 'Secciones')
-@elseif($type==2)
-@section('title', 'Páginas')
+@section('title', 'Boletines')
 @endif
 
 @section('content')
@@ -13,7 +10,7 @@
             <!--begin::Row-->
             <div class="row">
                 <div class="col-sm-6">
-                    <h3 class="mb-0">@if($type==1) Secciones @elseif($type==2) Páginas @endif</h3>
+                    <h3 class="mb-0">Boletines</h3>
                 </div>
             </div>
             <!--end::Row-->
@@ -31,7 +28,7 @@
                     <!-- Default box -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title" style="margin-bottom:0;">Listado de @if($type==1) Secciones @elseif($type==2) Páginas @endif</h3>
+                            <h3 class="card-title" style="margin-bottom:0;">Listado de Boletines</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse"
                                     title="Collapse">
@@ -48,8 +45,9 @@
                                 <table id="myTable" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <th>Visibilidad</th>
+                                            <th>Id</th>
+                                            <th>Titulo</th>
+                                            <th>Nivel de riesgo</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -101,5 +99,47 @@
                 url: 'https://cdn.datatables.net/plug-ins/2.3.4/i18n/es-ES.json',
             },
         });
+
+        const btnsShow = document.getElementsByName('btns-show');
+        for (const btn of btnsShow) {
+            btn.addEventListener('click', async (e) => {
+                try {
+                    let response = await fetch("{{ route('incidents.getIncident', ':id') }}".replace(':id', e.target.id), {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        },
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Error en la petición: " + response.status);
+                    }
+
+                    let result = await response.json();
+                    console.log(result.incident.entity_type.name);
+                    document.getElementById('name').textContent=result.incident.name;
+                    document.getElementById('email').textContent=result.incident.email;
+                    document.getElementById('entity').textContent=result.incident.entity;
+                    document.getElementById('entity_type').textContent=result.incident.entity_type.name;
+                    document.getElementById('phone').textContent=result.incident.phone;
+                    document.getElementById('state').textContent=result.incident.state;
+                    document.getElementById('date').textContent=result.incident.detection_date;
+                    document.getElementById('time').textContent=result.incident.detection_time;
+                    document.getElementById('objetive_host').textContent=result.incident.objetive_host;
+                    document.getElementById('origin_host').textContent=result.incident.origin_host;
+                    document.getElementById('assessment').textContent=result.incident.assessment;
+                    document.getElementById('evident').textContent=result.incident.evident;
+                    document.getElementById('affected_services').textContent=result.incident.affected_service.name;
+                    document.getElementById('affected_infrastructure').textContent=result.incident.affected_infrastructure.name;
+                    document.getElementById('description').textContent=result.incident.description;
+
+                    return result;
+                } catch (error) {
+                    console.error("Fallo en fetch:", error);
+                }
+            });
+        }
+
     </script>
 @endpush

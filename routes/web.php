@@ -26,6 +26,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/modulos/{module}/changeStatus','changeStatus')->name('modules.changeStatus');
     });
 
+    Route::controller(NewsletterController::class)->group(function(){
+        Route::get('/boletines','index')->name('newsletters.index');
+    });
+
+    Route::controller(ResourceController::class)->group(function(){
+        Route::get('/recursos','index')->name('resources.index');
+    });
+
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
